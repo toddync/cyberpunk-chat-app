@@ -1,0 +1,175 @@
+@import "https://unpkg.com/augmented-ui@2.0.0/aug-core.min.css";
+body {
+    --palletHR: 0deg;
+    --pallet1: #131323;
+    --pallet2: #551512;
+    --pallet3: #ff4e3b;
+    --pallet4: #00edff;
+    /* background: repeating-linear-gradient(
+            to bottom,
+            transparent 0px 0.3vh,
+            rgba(0, 0, 0, 0.25) 0.3vh 0.5vh
+        ),
+        radial-gradient(at center top, var(--pallet3), transparent 75%) center -50vh /
+            200vw 150vh no-repeat fixed,
+        var(--pallet1); */
+}
+
+.center-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes openScale {
+    0% {
+        transform: scale(1, 0);
+    }
+    20% {
+        transform: scale(1, 0);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes closeScale {
+    0% {
+        transform: scale(1, 1);
+    }
+    80% {
+        transform: scale(1, 0);
+    }
+    100% {
+        transform: scale(1, 0);
+    }
+}
+
+.login-container-close {
+    animation: 0.7s ease-in 0s 1 closeScale;
+    padding: 2.5rem 2.5rem 4.5rem 2.5rem;
+    color: var(--pallet4);
+    --aug-border: initial;
+    --aug-border-all: 0.125vw;
+    --aug-inlay: initial;
+    --aug-inlay-all: 0px;
+    --aug-inlay-bg: var(--pallet1);
+    --aug-inlay-opacity: 0.75;
+    --aug-clip-tr1: initial;
+    --aug-clip-br1: initial;
+    --aug-tr1: 0.5vw;
+    --aug-tr-inset2: 70%;
+    --aug-tr1-alt-join-out: initial;
+    --aug-br1: 1.5vw;
+    --aug-rect-l1: initial;
+    --aug-rect-l2: initial;
+    --aug-l1: 0.25vw;
+    --aug-l2: 0.25vw;
+    --aug-l-extend1: 1vw;
+    --aug-l-center: 70%;
+}
+
+.login-container-open {
+    animation: 0.7s ease-in 0s 1 openScale;
+    padding: 2.5rem 2.5rem 4.5rem 2.5rem;
+    color: var(--pallet4);
+    --aug-border: initial;
+    --aug-border-all: 0.125vw;
+    --aug-inlay: initial;
+    --aug-inlay-all: 0px;
+    --aug-inlay-bg: var(--pallet1);
+    --aug-inlay-opacity: 0.75;
+    --aug-clip-tr1: initial;
+    --aug-clip-br1: initial;
+    --aug-tr1: 0.5vw;
+    --aug-tr-inset2: 70%;
+    --aug-tr1-alt-join-out: initial;
+    --aug-br1: 1.5vw;
+    --aug-rect-l1: initial;
+    --aug-rect-l2: initial;
+    --aug-l1: 0.25vw;
+    --aug-l2: 0.25vw;
+    --aug-l-extend1: 1vw;
+    --aug-l-center: 70%;
+}
+
+.login-container-open input,
+.login-container-close input {
+    all: unset;
+    font-size: 1.5em;
+    padding: 0.2rem;
+    color: var(--pallet3);
+}
+
+.login-container-open input:focus,
+.login-container-close input:focus {
+    color: var(--pallet3);
+}
+
+.login-container-open input::placeholder,
+.login-container-close input::placeholder {
+    font-size: medium;
+    color: var(--pallet4);
+}
+
+.login-container-open input:focus::placeholder,
+.login-container-close input:focus::placeholder {
+    color: transparent;
+}
+
+.login-container-open .input-aug:has(input:focus),
+.login-container-close .input-aug:has(input:focus) {
+    --aug-border-bg: var(--pallet4);
+}
+
+.login-container-open .input-aug,
+.login-container-close .input-aug {
+    margin: 1rem;
+    padding: 0.2rem;
+    --aug-border: initial;
+    --aug-border-all: 0.125vw;
+    --aug-border-bg: var(--pallet3);
+    --aug-inlay: initial;
+    --aug-inlay-all: 0px;
+    --aug-inlay-bg: var(--pallet1);
+    --aug-br1: 0.75rem;
+    --aug-clip-br1: initial;
+}
+
+.login-container-open button,
+.login-container-close button {
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.3rem 1rem;
+    margin: 0.5rem 1rem;
+    color: var(--pallet4);
+    background: transparent;
+    float: right;
+}
+
+.login-container-open .button-aug,
+.login-container-close .button-aug {
+    --aug-border: initial;
+    --aug-border-all: 0.125vw;
+    --aug-inlay: initial;
+    --aug-inlay-all: 0px;
+    --aug-inlay-bg: var(--pallet1);
+    --aug-inlay-opacity: 0.75;
+    --aug-clip-br1: initial;
+    --aug-br1: 0.75rem;
+}
+
+.login-container-open .button-aug:hover,
+.login-container-close .button-aug:hover {
+    --aug-border-bg: var(--pallet4);
+    color: var(--pallet4);
+    --aug-inlay-bg: radial-gradient(var(--pallet1), var(--pallet4) 200%);
+}
+
+.login-container-open .alt,
+.login-container-close .alt {
+    scale: 0.7;
+    color: var(--pallet3);
+}
