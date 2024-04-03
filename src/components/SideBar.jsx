@@ -3,11 +3,13 @@ import useConversationsPaddingStore from "../store/conversationsPaddingStore";
 import useFirstRender from "../hooks/firstRender";
 import ConversationsHolder from "./ConversationsHolder";
 import useConversationsStore from "../store/conversationsStore";
+import useAddModalStore from "../store/addModalStore";
 
 const SideBar = () => {
     const topRef = useRef();
     const formRef = useRef();
     const { padding, update } = useConversationsPaddingStore();
+    const updateShow = useAddModalStore((s) => s.updateShow);
     const firstRender = useFirstRender();
 
     const updateCurrent = useConversationsStore((s) => s.updateCurrent);
@@ -36,6 +38,7 @@ const SideBar = () => {
                         className="segment-topbar__aside plus"
                         onClick={() => {
                             updateCurrent({});
+                            updateShow(true);
                         }}>
                         <div className="button-toolbar">
                             <a className="button button--primary button--size-lg">

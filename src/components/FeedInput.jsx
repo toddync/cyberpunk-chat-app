@@ -13,7 +13,6 @@ const FeedInput = () => {
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
 
-        // console.log(messageContent);
         current &&
             pb
                 .collection("messages")

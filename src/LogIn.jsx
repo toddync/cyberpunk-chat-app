@@ -33,7 +33,7 @@ const LogIn = () => {
     return (
         <div className="center-container">
             <div
-                className="login-container"
+                className="login-container-open"
                 data-augmented-ui>
                 <div
                     className="input-aug"

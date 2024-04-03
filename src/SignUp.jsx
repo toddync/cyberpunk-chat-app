@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from "./components/Modal";
 import ModalInput from "./components/ModalInput";
 import ModalButton from "./components/ModalButton";
+import pb from "./pb";
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -20,7 +21,15 @@ const SignUp = () => {
         setCredentials((s) => ({ ...s, [e.target.name]: e.target.value }))
     );
 
-    const sign = useCallback(() => {}, [credentials]);
+    const sign = useCallback(async () => {
+        try {
+            const r = await pb.collection("users").create(credentials);
+            navigate("/LogIn");
+            // console.log(r);
+        } catch (error) {
+            console.log(error.message);
+        }
+    }, [credentials]);
 
     return (
         <Modal>
@@ -52,7 +61,10 @@ const SignUp = () => {
                 value={credentials.passwordConfirm}
                 placeholder="confirm password"
             />
-            <ModalButton prompt="Sign up" />
+            <ModalButton
+                click={sign}
+                prompt="Sign up"
+            />
             <ModalButton
                 prompt="Log in"
                 click={() => navigate("/LogIn", { replace: true })}

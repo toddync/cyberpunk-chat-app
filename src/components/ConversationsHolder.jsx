@@ -1,4 +1,5 @@
 import pb from "../pb";
+import { useEffect } from "react";
 import useConversationsPaddingStore from "../store/conversationsPaddingStore";
 import useConversationsStore from "../store/conversationsStore";
 import Conversation from "./Conversation";
@@ -7,11 +8,14 @@ const ConversationsHolder = () => {
     const conversations = useConversationsStore((s) => s.conversations);
     const update = useConversationsStore((s) => s.update);
 
-    pb.authStore.model &&
-        pb
-            .collection("users")
-            .getFullList()
-            .then((e) => update(e));
+    useEffect(() => {
+        pb.authStore.model &&
+            pb
+                .collection("users")
+                .getFullList()
+                .then((e) => update(e));
+    }, []);
+
     return (
         <div
             className="nav-section"

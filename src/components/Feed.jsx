@@ -32,15 +32,23 @@ const Feed = () => {
 
     useEffect(() => {
         pb.collection("messages").subscribe("*", ({ action, record }) => {
-            console.log("l");
             if (action == "create") {
                 fetch();
             }
         });
+
         return pb.collection("messages").unsubscribe;
     }, []);
 
     useEffect(fetch, [current]);
+    useEffect(() => {
+        !current && pb.collection("messages").unsubscribe();
+    }, [current]);
+
+    useEffect(() => {
+        document.querySelector(".channel-feed__body").scrollTop =
+            document.querySelector(".channel-feed__body").scrollHeight;
+    }, [messages]);
 
     return (
         <div className="app-main">

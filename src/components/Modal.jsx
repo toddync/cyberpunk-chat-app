@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
+import useAddModalStore from "../store/addModalStore";
 
-const Modal = ({ children, destroy, show }) => {
+const Modal = ({ children }) => {
     const [class_, setClass] = useState("login-container-open");
+    const destroy = useAddModalStore((s) => s.destroy);
+    const upDestroy = useAddModalStore((s) => s.updateDestroy);
+    const show = useAddModalStore((s) => s.updateShow);
 
     useEffect(() => {
         destroy && setClass("login-container-close");
         destroy &&
             setTimeout(() => {
                 show(false);
+                upDestroy(false);
             }, 700);
     }, [destroy]);
 
